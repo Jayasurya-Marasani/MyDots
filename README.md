@@ -1,1 +1,1 @@
-Hello
+#### I am just working on some configurations of apps and also working on different window managers. This repo is about those configs. I will add the remaining things eventually. 
