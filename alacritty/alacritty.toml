@@ -1,0 +1,44 @@
+import = [
+    "~/.config/alacritty/themes/tokyo-night.toml"
+]
+
+
+live_config_reload = true
+
+[colors]
+draw_bold_text_with_bright_colors = true
+transparent_background_colors = true
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[shell]
+program = "/usr/bin/bash"
+
+
+[window]
+padding = {x = 5, y = 5}
+opacity = 1.0
+class = {general = "Alacritty", instance = "Alacritty"}
+
+[font]
+normal = {family = "JetBrains Mono", style = "Medium" }
+bold = {family = "JetBrains Mono", style = "Bold" }
+italic = {family = "JetBrains Mono", style = "MediumItalic" }
+bold_italic = {family = "JetBrains Mono", style = "BoldItalic"}
+size = 13
+
+
+[cursor]
+style = {shape = "Underline", blinking = "on" }
+blink_interval = 750
+
+[mouse]
+hide_when_typing = true
+
+
+[keyboard]
+bindings = [
+{key = "Return", mods = "Super|Shift", action = "SpawnNewInstance" }
+]
