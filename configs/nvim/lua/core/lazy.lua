@@ -17,5 +17,10 @@ require("lazy").setup({
     { import = "plugins.lsp-config" },
     { import = "plugins.gitsigns" },
     { import = "plugins.web-devicons" },
+    { import = "plugins.comment" },
+    { import = "plugins.autopairs" },
+    { import = "plugins.which-key" },
+    { import = "plugins.surround" },
+    { import = "plugins.dashboard" },
 })
 

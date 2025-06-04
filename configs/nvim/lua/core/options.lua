@@ -11,4 +11,33 @@ vim.opt.clipboard = 'unnamedplus'
 vim.opt.cursorline = true
 vim.o.shell = "/usr/bin/zsh"
 vim.g.mapleader = " "
+vim.opt.hlsearch = false
+vim.opt.incsearch = true
+vim.opt.scrolloff = 20
+vim.opt.sidescrolloff = 20
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
