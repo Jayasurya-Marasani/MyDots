@@ -1,0 +1,149 @@
+-- Basic Settings
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+vim.opt.termguicolors = true
+vim.opt.wrap = true
+vim.opt.mouse = 'a'
+vim.opt.clipboard = 'unnamedplus'
+vim.opt.cursorline = true
+vim.o.shell = "/usr/bin/zsh"
+vim.g.mapleader = " "
+
+-- Key Mappings
+
+-- Map 'jk' to Escape in insert mode
+vim.keymap.set('i', 'jk', '<Esc>', { noremap = true, silent = true })
+
+-- Buffer navigation
+vim.keymap.set('n', '<leader>bn', ':bnext<CR>', { noremap = true, silent = true })
+vim.keymap.set('n', '<leader>bp', ':bprev<CR>', { noremap = true, silent = true })
+
+-- Exit terminal mode with jk
+vim.keymap.set('t', 'jk', [[<C-\><C-n>]], { noremap = true })
+
+-- Open terminal in vertical split
+vim.keymap.set('n', '<leader>t', ':vsplit | terminal<CR>', { noremap = true })
+
+-- Plugin Manager (lazy.nvim)
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        "git", "clone", "--filter=blob:none",
+        "https://github.com/folke/lazy.nvim.git",
+        "--branch=stable", lazypath,
+    })
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup({
+    {
+        "folke/tokyonight.nvim",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            vim.cmd("colorscheme tokyonight-night")
+        end,
+    },
+
+    {
+        "nvim-lualine/lualine.nvim",
+        requires = { "nvim-tree/nvim-web-devicons", opt = true },
+        config = function()
+            require("lualine").setup {
+                options = {
+                    theme = "tokyonight",
+                    section_separators = '',
+                    component_separators = '',
+                },
+            }
+        end,
+    },
+
+    -- Telescope for fuzzy finding
+    {
+        "nvim-telescope/telescope.nvim",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        config = function()
+            local telescope = require('telescope')
+            local builtin = require('telescope.builtin')
+
+            telescope.setup {}
+
+            -- File finder: <leader>ff
+            vim.keymap.set('n', '<leader>ff', builtin.find_files, { noremap = true, silent = true })
+
+            -- Live grep: <leader>fg
+            vim.keymap.set('n', '<leader>fg', builtin.live_grep, { noremap = true, silent = true })
+        end,
+    },
+
+    -- Treesitter for syntax highlighting
+    {
+        "nvim-treesitter/nvim-treesitter",
+        run = ":TSUpdate",
+        config = function()
+            require('nvim-treesitter.configs').setup {
+                highlight = {
+                    enable = true,
+                },
+            }
+        end,
+    },
+
+    -- Neo-Tree Plugin
+    {
+        "nvim-neo-tree/neo-tree.nvim",
+        branch = "v3.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons", -- optional, for file icons
+            "MunifTanjim/nui.nvim",
+        },
+        config = function()
+            require("neo-tree").setup({
+                close_if_last_window = true,
+                enable_git_status = true,
+                enable_diagnostics = true,
+                filesystem = {
+                    filtered_items = {
+                        hide_dotfiles = false,
+                        hide_gitignored = true,
+                    },
+                },
+                window = {
+                    position = "right",  -- 👈 Open Neo-tree on the right side
+                    width = 40,
+                },
+            })
+
+            -- Keymap to toggle Neo-tree with <leader>e
+            vim.keymap.set('n', '<leader>e', ':Neotree toggle<CR>', { noremap = true, silent = true })
+            -- Toggle focus to Neo-tree with <leader>o
+            vim.keymap.set('n', '<leader>o', function()
+                local neotree_win = nil
+                for _, win in ipairs(vim.api.nvim_list_wins()) do
+                    local bufname = vim.api.nvim_buf_get_name(vim.api.nvim_win_get_buf(win))
+                    if bufname:match("neo%-tree") then
+                        neotree_win = win
+                        break
+                    end
+                end
+
+                if neotree_win then
+                    if vim.api.nvim_get_current_win() == neotree_win then
+                        vim.cmd("wincmd p")  -- Go back to previous window
+                    else
+                        vim.api.nvim_set_current_win(neotree_win)  -- Focus Neo-tree
+                    end
+                else
+                    vim.cmd("Neotree toggle")  -- If Neo-tree isn't open, open it
+                end
+            end, { noremap = true, silent = true })
+
+        end,
+    },
+})

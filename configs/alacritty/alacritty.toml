@@ -1,25 +1,26 @@
-import = [
-    "~/.config/alacritty/themes/tokyo-night.toml"
+general.import = [
+   "~/.config/alacritty/themes/tokyo-night.toml"
 ]
 
 
-live_config_reload = true
+general.live_config_reload = true
 
 [colors]
 draw_bold_text_with_bright_colors = true
 transparent_background_colors = true
 
 [scrolling]
-history = 10000
+history = 100000
 multiplier = 3
 
-[shell]
-program = "/usr/bin/bash"
+[terminal.shell]
+program = "/usr/bin/zsh"
 
 
 [window]
 padding = {x = 5, y = 5}
-opacity = 1.0
+opacity = 1 
+
 class = {general = "Alacritty", instance = "Alacritty"}
 
 [font]
