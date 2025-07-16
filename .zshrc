@@ -492,7 +492,7 @@ alias ll='eza -al --color=always --icons -1 -l'
 alias lt='eza -aT --color=always --group-directories-first' # tree listing
 # alias bat='batcat'
 alias ff='fzf --preview="bat --color=always {}"'
-alias inv='vim $(fzf -m --preview="bat --color=always {}")'
+alias inv='nvim $(fzf -m --preview="bat --color=always {}")'
 # Zoxide
 eval "$(zoxide init zsh)"     # Zoxide 
 
