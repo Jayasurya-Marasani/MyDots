@@ -22,5 +22,7 @@ require("lazy").setup({
     { import = "plugins.which-key" },
     { import = "plugins.surround" },
     { import = "plugins.dashboard" },
+    { import = "plugins.smear_cursor"},
+    -- { import = "plugins.telescope-project" },
 })
 
