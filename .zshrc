@@ -500,3 +500,39 @@ eval "$(zoxide init zsh)"     # Zoxide
 # Set up fzf key bindings and fuzzy completion
 source <(fzf --zsh)
 
+# vim mode
+bindkey -v
+export KEYTIMEOUT=1
+
+# Andriod Development Stuff like Flutter etc
+# Set Android SDK home
+export ANDROID_HOME="/opt/android-sdk" # Quotes are good practice
+
+# Add Android SDK tools to PATH
+# The order can be before or after $PATH, both work.
+# If you want them searched first:
+export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
+
+# If you want them searched last (and more explicit on individual additions):
+# export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
+# export PATH="$PATH:$ANDROID_HOME/platform-tools"
+# export PATH="$PATH:$ANDROID_HOME/emulator" # Optional, for running `emulator` command directly
+
+# Set Chrome executable for Flutter web
+export CHROME_EXECUTABLE="/usr/bin/chromium" # Quotes for consistency
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/js/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/js/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/home/js/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/js/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
