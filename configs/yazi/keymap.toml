@@ -1,0 +1,4 @@
+[[manager.prepend_keymap]]
+on   = [ "Z" ]
+run  = "plugin fzf"
+desc = "Jump to a directory or reveal a file via fzf"

@@ -1,0 +1,75 @@
+# A nice dark theme configuration (Tokyo Night inspired)
+[manager]
+cwd = { fg = "#9ece6a" }
+
+# Hovered
+hovered         = { fg = "#16161e", bg = "#7aa2f7" }
+preview_hovered = { underline = true }
+
+# Find
+find_keyword  = { fg = "#e0af68", italic = true }
+find_position = { fg = "#ff9e64", bg = "reset", bold = true }
+
+# Marker
+marker_selected = { fg = "#7aa2f7", bg = "#16161e", bold = true }
+marker_copied   = { fg = "#9ece6a", bg = "#16161e", bold = true }
+marker_cut      = { fg = "#f7768e", bg = "#16161e", bold = true }
+
+# Tab
+tab_active   = { fg = "#16161e", bg = "#7aa2f7", bold = true }
+tab_inactive = { fg = "#a9b1d6", bg = "#292e42" }
+tab_width    = 1
+
+# Border
+border_symbol = "│"
+border_style  = { fg = "#565f89" }
+
+[status]
+separator_open  = ""
+separator_close = ""
+separator_style = { fg = "#292e42", bg = "#292e42" }
+
+# Mode
+mode_normal = { fg = "#16161e", bg = "#7aa2f7", bold = true }
+mode_select = { fg = "#16161e", bg = "#bb9af7", bold = true }
+mode_unset  = { fg = "#16161e", bg = "#f7768e", bold = true }
+
+# Progress
+progress_label  = { fg = "#ffffff", bold = true }
+progress_normal = { fg = "#7aa2f7", bg = "#292e42" }
+progress_error  = { fg = "#f7768e", bg = "#292e42" }
+
+# Permissions
+permissions_t = { fg = "#7aa2f7" }
+permissions_r = { fg = "#e0af68" }
+permissions_w = { fg = "#f7768e" }
+permissions_x = { fg = "#9ece6a" }
+permissions_s = { fg = "#bb9af7" }
+
+[input]
+border   = { fg = "#7aa2f7" }
+title    = {}
+value    = {}
+selected = { reversed = true }
+
+[select]
+border   = { fg = "#7aa2f7" }
+active   = { fg = "#bb9af7" }
+inactive = {}
+
+[tasks]
+border  = { fg = "#7aa2f7" }
+title   = {}
+hovered = { underline = true }
+
+[which]
+cols = 3
+mask            = { bg = "#292e42" }
+cand            = { fg = "#7aa2f7" }
+rest            = { fg = "#565f89" }
+desc            = { fg = "#bb9af7" }
+separator       = " ➜ "
+separator_style = { fg = "#565f89" }
+
+[flavor]
+dark = "kanagawa"
